@@ -30,9 +30,10 @@
   <%= button_to "Log out", session_path, method: :delete if authenticated? %>
 </nav>
 
+<div class="notice"><%= notice %></div>
+
 <main>
     <%= yield %>
     </main>
-    <div class="notice"><%= notice %></div>
   </body>
 </html>
