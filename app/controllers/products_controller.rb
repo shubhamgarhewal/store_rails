@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
 
   def index
-    @products = Product.all
+    @products = Product.order(inventory_count: :asc)
   end
 
   def show

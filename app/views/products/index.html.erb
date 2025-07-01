@@ -3,11 +3,37 @@
 
 <%= link_to "New product", new_product_path if authenticated? %>
 
-
 <div id="products">
-  <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product %>
-    </div>
+<% @products.each do |product| %>
+  <div>
+  <%= link_to product.name, product %> -->  <%= product.inventory_count %> 
+  </div>
   <% end %>
-</div>
+  </div>
+
+<table border="1" cellspacing="0" cellpadding="8">
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Inventory</th>
+  <th>Image</th>
+</tr>
+</thead>
+  <tbody>
+    <% @products.each do |product| %>
+       <tr>
+        <td><%=link_to product.name, product %></td>
+        <td><%= product.description %></td>
+        <td><%= product.inventory_count %></td>
+        <td>
+        <% if product.featured_image.attached? %>
+        <%= image_tag product.featured_image %>
+      <% else %>
+        No image
+      <% end %>
+        </td>  
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
